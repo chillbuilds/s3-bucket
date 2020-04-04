@@ -1,0 +1,29 @@
+{
+  "name": "s3-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chillbuilds/s3-upload.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chillbuilds/s3-upload/issues"
+  },
+  "homepage": "https://github.com/chillbuilds/s3-upload#readme",
+  "dependencies": {
+    "aws-sdk": "^2.653.0",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "node-env-run": "^3.0.2"
+  }
+}
