@@ -92,7 +92,7 @@ function pullPrompt(){
                 break;
             default:
         bucketPull(keyDataObj, data.file)
-        opn('https://data-store-213.s3.us-east-2.amazonaws.com/'+data.file);
+        opn(`https://${keyDataObj.bucket}.s3.${keyDataObj.region}.amazonaws.com/${data.file}`);
         startPrompt()
     }})
 }

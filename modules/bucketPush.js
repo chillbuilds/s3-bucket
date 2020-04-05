@@ -23,7 +23,7 @@ s3.upload(params, function (err, data) {
     console.log("Error", err);
   }
   if (data) {
-    console.log("Uploaded @", data.Location);
+    console.log("\nUploaded @", data.Location);
   }
 });
 }
