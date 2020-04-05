@@ -1,56 +1,37 @@
-const AWS = require('aws-sdk');
-const fs = require('fs');
-const path = require('path');
+const bucketPush = require('./modules/bucketPush')
+const bucketPull = require('./modules/bucketPull')
+const inquirer = require('inquirer')
+const fs  = require('fs')
 const keyData = fs.readFileSync('.env', 'utf8')
 const keyDataObj = JSON.parse(keyData)
-const MP4Parser = require('node-video-lib').MP4Parser
 
-//configuring the AWS environment
-AWS.config.update({
-    accessKeyId: keyDataObj.accessKeyId,
-    secretAccessKey: keyDataObj.secretAccessKey
-  });
+function startPrompt(){
+    inquirer.prompt (
+        {type: 'list',
+        name: 'choice',
+        choices: ['Push to Bucket', 'Pull From Bucket', 'Delete From Bucket'],
+        message: 'What would you like to do?'}
+    ).then(function(data){
+        switch(data.choice) {
+            case 'Push to Bucket':
+                pushPrompt()
+                break;
+            case 'Pull from Bucket':
+                pullPrompt()
+                break;
+            case 'Delete from Bucket':
+                break;
+            }})
+}
+function pushPrompt(){
+    inquirer.prompt (
+        {type: 'input',
+        name: 'dir',
+        message: 'Enter File Directory'}
+    ).then(function(data){
+        bucketPush(keyDataObj, data.dir)
+    })
+}
 
-var s3 = new AWS.S3();
-var filePath = "./data/pi-housing.png";
 
-//configuring parameters
-var params = {
-  Bucket: 'data-store-213',
-  Body : fs.createReadStream(filePath),
-  Key : "folder/"+Date.now()+"_"+path.basename(filePath)
-};
-
-// async function getFile(){
-//   const data =  s3.getObject(
-//     {
-//         Bucket: 'data-store-213',
-//         Key: 'folder/1586056170520_vid-test.mp4'
-//       }
-    
-//   ).promise();
-//   return data;
-// }
-// getFile()
-// .then( function(data){
-//   let buf = Buffer.from(data.Body)
-//   // let base64 = buf.toString()
-//   let parseTest = MP4Parser.parse(buf)
-//   console.log(parseTest)
-// })
-// .then(
-//   function encode(data){
-//     let buf = Buffer.from(data.Body);
-//     let base64 = buf.toString('base64');
-//     let htmlFile = `<img src='data:image/jpeg;base64,${base64}'>`
-//     fs.writeFileSync('./test.html', htmlFile)
-// }
-// )
-// s3.upload(params, function (err, data) {
-//   if (err) {
-//     console.log("Error", err);
-//   }
-//   if (data) {
-//     console.log("Uploaded @", data.Location);
-//   }
-// });
+startPrompt()

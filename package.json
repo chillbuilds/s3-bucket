@@ -1,5 +1,5 @@
 {
-  "name": "s3-upload",
+  "name": "s3-bucket",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -7,20 +7,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chillbuilds/s3-upload.git"
+    "url": "git+https://github.com/chillbuilds/s3-bucket.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chillbuilds/s3-upload/issues"
+    "url": "https://github.com/chillbuilds/s3-bucket/issues"
   },
-  "homepage": "https://github.com/chillbuilds/s3-upload#readme",
+  "homepage": "https://github.com/chillbuilds/s3-bucket#readme",
   "dependencies": {
     "aws-sdk": "^2.653.0",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
-    "node-video-lib": "^2.2.0",
+    "inquirer": "^7.1.0",
     "path": "^0.12.7",
     "s3": "^4.4.0"
   },
