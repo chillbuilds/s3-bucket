@@ -13,7 +13,7 @@ async function startPrompt(){
     inquirer.prompt (
         {type: 'list',
         name: 'choice',
-        choices: ['Push To Bucket', 'Pull From Bucket', 'Delete From Bucket', 'List Objects'],
+        choices: ['Push To Bucket', 'Pull From Bucket', 'Delete From Bucket', 'Exit Application'],
         message: 'What would you like to do?'}
     ).then(function(data){
         switch(data.choice) {
@@ -29,10 +29,13 @@ async function startPrompt(){
             case 'List Objects':
                 listObjects()
                 break;
+            case 'Exit Application':
+                break;
             default:
                 console.log('Funky Switch')
                 break;
             }})
+    bucketList = listObj(keyDataObj)
 }
 function pushPrompt(){
     inquirer.prompt (
@@ -40,9 +43,28 @@ function pushPrompt(){
         name: 'dir',
         message: 'Enter File Directory'}
     ).then(function(data){
-        bucketPush(keyDataObj, data.dir)
+        filePrompt(data.dir)
     })
 }
+function filePrompt(dir){
+    let fileArr = []
+    fs.readdirSync(dir).forEach(file => {
+        let stats = fs.statSync(`${dir}${file}`)
+        if(stats.isFile()== true){
+            fileArr.push(file)
+        }
+      })
+      console.log(fileArr)
+      inquirer.prompt (
+        {type: 'list',
+        name: 'choice',
+        choices: fileArr,
+        message: 'Which File Would You Like To Add To Bucket?'}
+    ).then(function(data){
+    bucketPush(keyDataObj, dir+data.choice)
+    startPrompt()
+})}
+
 function pullPrompt(){
     let keyArr = []
     for(var i = 0; i < bucketList.length;i++){
@@ -56,6 +78,7 @@ function pullPrompt(){
     ).then(function(data){
         switch(data.file) {
             case 'Image/':
+                console.log('You selected a folder')
                 startPrompt()
                 break;
             case 'Misc/':

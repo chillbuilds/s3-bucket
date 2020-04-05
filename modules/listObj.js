@@ -1,5 +1,4 @@
 module.exports = function listObj(keyDataObj){
-    console.log('\nFetching Bucket List\n')
     const AWS = require('aws-sdk')
     var objArr = []
     
@@ -26,9 +25,7 @@ module.exports = function listObj(keyDataObj){
         for(var i = 0;i < data.Contents.length;i++){
             objArr.push(data.Contents[i])
         }
-        console.log('\nBucket List Populated')
+        console.log('\nBucket List Updated')
     })
-    
-    // console.log(objArr)
       return objArr
 }
