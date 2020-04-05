@@ -1,6 +1,6 @@
 var s3 = require('s3');
 const fs = require('fs');
-const keyData = fs.readFileSync('keyID.env', 'utf8')
+const keyData = fs.readFileSync('.env', 'utf8')
 const keyDataObj = JSON.parse(keyData)
 
 var client = s3.createClient({
@@ -22,7 +22,7 @@ var client = s3.createClient({
    
     s3Params: {
       Bucket: "data-store-213",
-      Key: "folder/1586040303306_pi-housing.png",
+      Key: "folder/1586040148049_file.txt",
       // other options supported by getObject
       // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property
     },

@@ -1,6 +1,5 @@
 {
   "name": "s3-upload",
-  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,6 +20,7 @@
     "aws-sdk": "^2.653.0",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
+    "node-video-lib": "^2.2.0",
     "path": "^0.12.7",
     "s3": "^4.4.0"
   },
