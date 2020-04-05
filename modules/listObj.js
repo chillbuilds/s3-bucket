@@ -11,7 +11,7 @@ module.exports = function listObj(keyDataObj){
     
     var s3 = new AWS.S3();
     var params = {
-    Bucket: 'data-store-213',
+    Bucket: keyDataObj.bucket,
     // Delimiter: 'STRING_VALUE',
     // EncodingType: url,
     // Marker: 'STRING_VALUE',

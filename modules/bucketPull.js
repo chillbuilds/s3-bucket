@@ -13,7 +13,7 @@ var s3 = new AWS.S3();
 
 async function getFile(){
       const data =  s3.getObject(
-        {Bucket: 'data-store-213',
+        {Bucket: keyDataObj.bucket,
         Key: pullObj}
       ).promise();
       return data;
@@ -34,4 +34,5 @@ async function getFile(){
         console.log('\n\nWrite Success')
     }
     )
+    return
 }

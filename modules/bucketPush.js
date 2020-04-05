@@ -13,7 +13,7 @@ var s3 = new AWS.S3();
 
 //configuring parameters
 var params = {
-  Bucket: 'data-store-213',
+  Bucket: keyDataObj.bucket,
   Body : fs.createReadStream(filePath),
   Key : "folder/"+Date.now()+"_"+path.basename(filePath)
 };

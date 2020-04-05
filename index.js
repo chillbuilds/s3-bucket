@@ -1,6 +1,7 @@
 const bucketPush = require('./modules/bucketPush')
 const bucketPull = require('./modules/bucketPull')
 const listObj = require('./modules/listObj')
+const opn = require('opn');
 const inquirer = require('inquirer')
 const fs  = require('fs')
 const keyData = fs.readFileSync('.env', 'utf8')
@@ -66,6 +67,7 @@ function pullPrompt(){
                 break;
             default:
         bucketPull(keyDataObj, data.file)
+        opn('https://data-store-213.s3.us-east-2.amazonaws.com/'+data.file);
         startPrompt()
     }})
 }
