@@ -21,7 +21,8 @@
     "aws-sdk": "^2.653.0",
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "s3": "^4.4.0"
   },
   "devDependencies": {
     "node-env-run": "^3.0.2"
