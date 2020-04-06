@@ -2,6 +2,10 @@
 
 A CLI tool for S3 bucket data exchange
 
+Upload, download, and delete files from an s3 bucket<br><br>
+
+<img src="./assets/images/startPrompt.JPG" style="width:60%;margin-left:20%">
+<br><br>
 Built With Nodejs 
 <ul> 
 <li>AWS SDK</li>
@@ -39,5 +43,3 @@ Create .env file in repo root and populate using the following template
 {"accessKeyId":"enter_access_key_id",<br> "secretAccessKey":"enter_secret_access_key",<br> "bucket":"enter_bucket_name",<br>
 "region":"enter_region"}<br><br>
 region example: "us-east-2"<br><br>
-
-<img src="./assets/images/startPrompt.JPG" style="width:60%;margin-left:20%">
